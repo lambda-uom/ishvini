@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
+
 const Tablesupervisor = (props) => {
+  const [buttonState, setButtonState] = useState("Accept");
+  const [deleteState, setdeleteState] = useState("Decline");
   function successmsg() {
+    setButtonState("Accepted");
     swal({
       title: "Are you sure",
       text: "You want to give access to this chapter?",
@@ -20,6 +24,7 @@ const Tablesupervisor = (props) => {
     });
   }
   function declinemsg() {
+    setdeleteState("Declined");
     swal({
       title: "Are you sure",
       text: "You don't want to give access to this chapter?",
@@ -49,15 +54,17 @@ const Tablesupervisor = (props) => {
             type="button"
             className="mx-auto btn btn-primary mr-1 btn-lg  mt-5"
             onClick={successmsg}
+            disabled={buttonState == "Accept" ? false : true}
           >
-            Accept
+            {buttonState}
           </button>{" "}
           <button
             type="button"
             className="mx-auto btn btn-danger mr-1 btn-lg  mt-5"
             onClick={declinemsg}
+            disabled={deleteState == "Decline" ? false : true}
           >
-            Decline
+            {deleteState}
           </button>
         </td>
       </tr>

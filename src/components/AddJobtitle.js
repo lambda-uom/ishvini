@@ -4,7 +4,8 @@ import "../App.css";
 import swal from "sweetalert";
 
 const AddJobtitle = () => {
-  function successmsg() {
+  function successmsg(e) {
+    e.preventDefault();
     swal({
       icon: "success",
       text: "Successfully created",
@@ -17,7 +18,7 @@ const AddJobtitle = () => {
       <br></br>
       <div className="columns mt-5">
         <div className="column is-half mt-5">
-          <form name="myForm">
+          <form name="myForm" onSubmit={successmsg}>
             <div className="field">
               <label class="ml-5 createchap">Jobtitle name</label>
               <div className="control">
@@ -26,6 +27,7 @@ const AddJobtitle = () => {
                   name="jname"
                   className="input my-3 ml-5"
                   placeholder="Name"
+                  required
                 />
               </div>
             </div>
@@ -51,9 +53,8 @@ const AddJobtitle = () => {
               <br></br>
               <div className="control">
                 <button
-                  type="button"
+                  type="submit"
                   className="mx-auto btn btn-primary mr-1 btn-lg column is-half mt-5"
-                  onClick={successmsg}
                 >
                   Save
                 </button>

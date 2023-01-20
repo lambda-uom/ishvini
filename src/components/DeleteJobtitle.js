@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
 const DeleteJobtitle = () => {
-  function deletemsg() {
+  function deletemsg(e) {
+    e.preventDefault();
     swal({
       title: "Confirm",
       text: "Are you absolutely sure you want to permanently delete this jobtitle and all the data it contains?",
@@ -26,11 +27,11 @@ const DeleteJobtitle = () => {
         <br></br>
         <div className="title">NETS:Delete Jobtitle</div>
         <br></br>
-        <form>
+        <form name="myForm" onSubmit={deletemsg}>
           <div className="field">
             <label class="ml-5 createchap">Reason for delete</label>
             <div className="control">
-              <textarea class="Reason" rows="4" cols="100"></textarea>
+              <textarea class="Reason" rows="4" cols="100" required></textarea>
             </div>
           </div>
           <div></div>
@@ -41,11 +42,7 @@ const DeleteJobtitle = () => {
           </div>
 
           <div class="container">
-            <button
-              type="button"
-              class="mx-auto btn btn-danger mr-1 btn-lg"
-              onClick={deletemsg}
-            >
+            <button type="submit" class="mx-auto btn btn-danger mr-1 btn-lg">
               Delete
             </button>
           </div>

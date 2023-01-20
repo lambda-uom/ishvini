@@ -41,6 +41,7 @@ const AddChapter = () => {
                 <option value="Dev">Development</option>
               </select>
             </div>
+            <br></br>
             <div className="control">
               <button
                 type="submit"
